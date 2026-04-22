@@ -1,0 +1,8 @@
+method,mission_return,op_cost,attacker_delay,blue_service_interruptions,core_violation_rate_pct
+H-MARL Expert,-2018,65.4,38.7,9.8,13.9
+TERLA-PPO,-2337,55.9,24.8,7.6,18.4
+LLM+RL ACD,-2764,72.6,29.3,13.8,21.7
+Zero-Trust MARL,-2211,78.2,44.2,12.7,16.5
+CommFormer-Hetero,-2095,63.1,41.5,8.9,11.6
+C-MADF,-2457,60.8,31.9,7.9,17.2
+Proposed HMAL,-1764,58.7,56.1,6.9,7.8

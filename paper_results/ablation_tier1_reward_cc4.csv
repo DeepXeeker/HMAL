@@ -1,0 +1,5 @@
+variant,mission_return,attacker_delay,op_cost,service_interruptions,episodes_to_convergence
+Immediate Reward Only,-2148,38.1,64.7,9.6,891
+No Internal Guidance,-1942,46.9,61.3,8.3,744
+Uniform Option Credit,-2011,43.8,62.4,8.8,786
+Full Tier-1 Reward,-1776,55.2,59.4,7.2,612

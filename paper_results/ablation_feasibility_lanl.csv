@@ -1,0 +1,6 @@
+variant,f1,auprc,invalid_actions_pct,projected_service_disruption,core_violation_rate_pct
+Masking Only,0.934,0.952,2.4,7.2,11.7
+Budget Only,0.929,0.947,5.9,7.9,10.8
+Soft-Penalty Only,0.921,0.939,8.7,8.8,14.6
+No Constraints,0.913,0.931,12.4,9.6,18.9
+Full Feasibility-Aware,0.938,0.956,1.8,7.6,8.9

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coalition-aware-hmal"
+version = "0.1.0"
+description = "Reconstructed codebase for coalition-aware deception-aware HMAL cyber defense"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "OpenAI reconstruction"}
+]
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "pyyaml>=6.0",
+  "torch>=2.1",
+  "scikit-learn>=1.4",
+  "networkx>=3.2",
+  "gymnasium>=0.29",
+  "tqdm>=4.66",
+  "matplotlib>=3.8",
+  "rich>=13.7"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+hmal = "hmal.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["hmal*"]

@@ -1,0 +1,11 @@
+numpy>=1.26
+pandas>=2.2
+pyyaml>=6.0
+torch>=2.1
+scikit-learn>=1.4
+networkx>=3.2
+gymnasium>=0.29
+tqdm>=4.66
+matplotlib>=3.8
+rich>=13.7
+pytest>=8.0

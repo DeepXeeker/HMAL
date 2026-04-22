@@ -1,0 +1,8 @@
+environment:
+  type: darpa_offline
+  episode_horizon: 500
+  processed_path: data/processed/darpa/darpa_windows.parquet
+  label_path: data/processed/darpa/darpa_labels.parquet
+  window_size: 128
+  step_size: 32
+  source_groups: [CADETS, TRACE, THEIA, FiveDirections]

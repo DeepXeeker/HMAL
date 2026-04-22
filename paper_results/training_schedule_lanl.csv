@@ -1,0 +1,5 @@
+variant,precision,recall,f1,auprc,lead_time_min,episodes_to_convergence,seed_std_f1
+Full Staged Training,,0.923,0.938,0.956,42.1,,0.007
+Joint End-to-End,,,0.920,0.939,,,0.013
+No Stage III,0.958,,,,,603,
+Reverse Order,,,0.910,0.928,33.0,1016,0.015

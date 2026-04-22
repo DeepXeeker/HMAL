@@ -1,0 +1,12 @@
+environment:
+  type: cyborg_cc4
+  episode_horizon: 500
+  train_mode: true
+  mission_phase_weighting: true
+  defenders: 5
+  use_8bit_messages: true
+  mode_to_actions:
+    Sense: [Monitor, Analyse]
+    Deceive: [DeployDecoy]
+    Recover: [Remove, Restore, BlockTrafficZone, AllowTrafficZone]
+    Idle: [Sleep]

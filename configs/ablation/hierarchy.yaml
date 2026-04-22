@@ -1,0 +1,14 @@
+group: hierarchy
+variants:
+  full_hmal:
+    selector_enabled: true
+    single_tier_ppo: false
+    flat_policy: false
+  single_tier_ppo:
+    selector_enabled: false
+    single_tier_ppo: true
+    flat_policy: false
+  flat_policy:
+    selector_enabled: false
+    single_tier_ppo: false
+    flat_policy: true

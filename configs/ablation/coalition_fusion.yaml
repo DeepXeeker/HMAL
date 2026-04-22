@@ -1,0 +1,22 @@
+group: coalition_fusion
+variants:
+  full_fused_profile:
+    include_messages: true
+    delayed_messages: false
+    noisy_messages: false
+    local_only: false
+  no_message:
+    include_messages: false
+    delayed_messages: false
+    noisy_messages: false
+    local_only: false
+  local_only_belief:
+    include_messages: false
+    delayed_messages: false
+    noisy_messages: false
+    local_only: true
+  noisy_delayed_fusion:
+    include_messages: true
+    delayed_messages: true
+    noisy_messages: true
+    local_only: false

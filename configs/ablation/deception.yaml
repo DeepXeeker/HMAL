@@ -1,0 +1,18 @@
+group: deception
+variants:
+  full_hmal:
+    deceive_enabled: true
+    deploy_decoy_enabled: true
+    decoy_budget_fraction: 0.15
+  no_deception:
+    deceive_enabled: true
+    deploy_decoy_enabled: false
+    decoy_budget_fraction: 0.0
+  no_deceive_mode:
+    deceive_enabled: false
+    deploy_decoy_enabled: false
+    decoy_budget_fraction: 0.0
+  capped_deceive:
+    deceive_enabled: true
+    deploy_decoy_enabled: true
+    decoy_budget_fraction: 0.05

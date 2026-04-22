@@ -1,0 +1,200 @@
+# Coalition-Aware HMAL
+
+Reference implementation scaffold for the paper:
+
+**Coalition-Aware Autonomous Cyber Defense with Deception-Aware Hypergame Modeling and Hierarchical Multi-Agent Learning**
+
+This repository reconstructs the paper's method as an executable research codebase with:
+
+- a **Tier-1 tabular Q-learning mode selector** over `Sense`, `Deceive`, `Recover`, and `Idle`
+- **Tier-2 PPO executors** for mode-specific low-level actions
+- **deception-aware observation corruption** for partial observability, delay, and dropout
+- **coalition-aware message fusion**, budget enforcement, and core-feasibility checks
+- **CC4/CybORG adapters** for interactive simulation
+- **LANL** and **DARPA TC E5** offline replay pipelines for telemetry-driven evaluation
+- **all ablation families described in the paper** as configurable experiments
+
+## What is included
+
+```text
+coalition-aware-hmal/
+├── configs/                  # default, env, and ablation configs
+├── data_cards/               # dataset cards and preparation notes
+├── docker/                   # reproducible container image
+├── docs/                     # paper analysis, reconstruction notes, reproduction guide
+├── hmal/                     # Python package
+├── paper_results/            # CSVs containing reported paper values where available
+├── scripts/                  # entry-point scripts for training, evaluation, ablations, plotting
+├── tests/                    # lightweight unit tests
+├── .github/workflows/        # CI
+├── Makefile
+├── pyproject.toml
+└── requirements.txt
+```
+
+## Important reconstruction note
+
+The paper text is rich conceptually, but several implementation-critical details are **not fully specified**, including the exact equations referenced as Eq. (18) and Eq. (19), the exact state discretization for Tier-1, the precise coalition-value decomposition for every ablation, and complete numeric values for figure-only ablations. This repository therefore implements a **faithful research reconstruction** rather than a claim of exact byte-for-byte reproduction.
+
+See:
+
+- `docs/paper_analysis.md`
+- `docs/reconstruction_notes.md`
+- `docs/reproduction.md`
+
+## Installation
+
+### 1) Core Python environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+pip install -e .
+```
+
+### 2) Optional: CybORG / CC4 simulator
+
+This repository keeps CybORG optional because the simulator is distributed separately and is not available as a standard PyPI package for this project layout.
+
+```bash
+# after cloning the official CybORG / CC4 repository
+pip install -e /path/to/CybORG-or-CC4-repo
+```
+
+The wrapper in `hmal/envs/cyborg_cc4.py` will raise a clear error if CybORG is not installed.
+
+## Data preparation
+
+### LANL cyber1
+
+Place the official files under a directory such as:
+
+```text
+data/raw/lanl/
+├── auth.txt.gz
+├── proc.txt.gz
+├── flows.txt.gz
+├── dns.txt.gz
+└── redteam.txt.gz
+```
+
+Then run:
+
+```bash
+python scripts/prepare_lanl.py --input-dir data/raw/lanl --output-dir data/processed/lanl
+```
+
+### DARPA Transparent Computing E5
+
+This implementation expects either:
+
+- pre-converted JSONL / CSV / Parquet files, or
+- a user-supplied preprocessing step that exports normalized event records.
+
+Then run:
+
+```bash
+python scripts/prepare_darpa.py --input-dir data/raw/darpa_tc_e5 --output-dir data/processed/darpa
+```
+
+## Training
+
+### Stage I: Tier-2 PPO pretraining
+
+```bash
+python scripts/train_stage1.py --config configs/default.yaml --env configs/env/cc4.yaml
+```
+
+### Stage II: Tier-1 Q-learning
+
+```bash
+python scripts/train_stage2.py --config configs/default.yaml --env configs/env/cc4.yaml
+```
+
+### Stage III: joint refinement
+
+```bash
+python scripts/train_stage3.py --config configs/default.yaml --env configs/env/cc4.yaml
+```
+
+### End-to-end runner
+
+```bash
+python scripts/train_full.py --config configs/default.yaml --env configs/env/cc4.yaml
+```
+
+## Evaluation
+
+```bash
+python scripts/evaluate.py --config configs/default.yaml --env configs/env/lanl.yaml
+python scripts/evaluate.py --config configs/default.yaml --env configs/env/darpa.yaml
+```
+
+## Ablations
+
+All ablation groups from the paper are exposed as config families:
+
+- hierarchy
+- tier1_reward
+- training_schedule
+- coalition_fusion
+- deception
+- distortion
+- feasibility
+
+Example:
+
+```bash
+python scripts/run_ablation.py --group hierarchy --variant full_hmal
+python scripts/run_ablation.py --group distortion --variant clean_training
+```
+
+## Reported paper tables and plotting
+
+Reported numeric values that were explicit in the paper text are stored as CSV files under `paper_results/`.
+
+```bash
+python scripts/reproduce_reported_tables.py
+python scripts/plot_reported_results.py --input paper_results --output outputs/plots
+```
+
+## Quick design summary
+
+### Tier-1
+
+- tabular Q-learning
+- bounded/hashing-based state abstraction
+- option-horizon credit assignment
+- internal guidance term for evidence-aware routing
+
+### Tier-2
+
+- mode-specific PPO executors
+- action masking by selected mode
+- coalition-budget checks before execution
+- shared observation pipeline + optional coalition message fusion
+
+### Coalition layer
+
+- coalition value = discounted mission return minus discounted action cost
+- equal-share and Monte-Carlo Shapley allocation
+- core feasibility checks over candidate subcoalitions
+
+### Offline replay layer
+
+- LANL and DARPA telemetry are converted into normalized event windows
+- event windows are mapped to the six paper feature groups
+- belief distortion is simulated by subsampling, delay, and source dropout
+- alarms and progression scores are produced from the HMAL belief trajectory
+
+## Testing
+
+```bash
+pytest -q
+```
+
+## License
+
+MIT

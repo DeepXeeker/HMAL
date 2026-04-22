@@ -1,0 +1,26 @@
+group: training_schedule
+variants:
+  full_staged_training:
+    stage1: true
+    stage2: true
+    stage3: true
+    reverse_order: false
+    joint_end_to_end: false
+  joint_end_to_end:
+    stage1: false
+    stage2: false
+    stage3: false
+    reverse_order: false
+    joint_end_to_end: true
+  no_stage3:
+    stage1: true
+    stage2: true
+    stage3: false
+    reverse_order: false
+    joint_end_to_end: false
+  reverse_order:
+    stage1: true
+    stage2: true
+    stage3: false
+    reverse_order: true
+    joint_end_to_end: false

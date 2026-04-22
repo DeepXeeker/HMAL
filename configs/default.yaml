@@ -1,0 +1,59 @@
+experiment:
+  name: coalition_aware_hmal
+  seed: 7
+  output_dir: outputs
+  checkpoint_dir: checkpoints
+
+training:
+  gamma: 0.99
+  total_episodes: 1000
+  eval_every: 50
+  max_steps_per_episode: 500
+  train_stage3: true
+
+selector:
+  modes: [Sense, Deceive, Recover, Idle]
+  epsilon_start: 1.0
+  epsilon_end: 0.05
+  epsilon_decay_episodes: 800
+  alpha_start: 0.10
+  alpha_end: 0.02
+  guidance_weight: 0.10
+  discount_option_credit: true
+
+executors:
+  hidden_sizes: [256, 128, 64]
+  actor_lr: 0.0003
+  critic_lr: 0.001
+  clip_ratio: 0.2
+  rollout_length: 128
+  batch_size: 512
+  epochs: 4
+  grad_norm: 0.5
+
+observation:
+  feature_groups: [host, iface, proc, sess, sys, user]
+  hash_dim: 128
+  include_messages: true
+  distortion:
+    enabled: true
+    subsample_p: 0.10
+    dropout_p: 0.05
+    delay_steps: 2
+
+coalition:
+  message_bits: 8
+  max_zone_blocks_per_step: 1
+  decoy_budget_fraction: 0.15
+  shapley_permutations: 200
+  candidate_subcoalitions: [singletons, adjacent_pairs, triads]
+
+costs:
+  DeployDecoy: -0.05
+  Restore: -1.0
+  Remove: -0.1
+  BlockTrafficZone: -0.05
+  AllowTrafficZone: -0.01
+  Analyse: -0.001
+  Monitor: -0.001
+  Sleep: -0.0005

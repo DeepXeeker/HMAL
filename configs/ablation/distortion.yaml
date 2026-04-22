@@ -1,0 +1,14 @@
+group: distortion
+variants:
+  full_distortion_aware:
+    distortion_enabled: true
+    sample_random_distortion: true
+    fixed_mild_distortion: false
+  clean_training:
+    distortion_enabled: false
+    sample_random_distortion: false
+    fixed_mild_distortion: false
+  fixed_mild_distortion:
+    distortion_enabled: true
+    sample_random_distortion: false
+    fixed_mild_distortion: true

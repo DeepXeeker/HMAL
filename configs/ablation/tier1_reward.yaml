@@ -1,0 +1,18 @@
+group: tier1_reward
+variants:
+  full_tier1_reward:
+    immediate_only: false
+    guidance_weight: 0.10
+    discount_option_credit: true
+  immediate_reward_only:
+    immediate_only: true
+    guidance_weight: 0.0
+    discount_option_credit: false
+  no_internal_guidance:
+    immediate_only: false
+    guidance_weight: 0.0
+    discount_option_credit: true
+  uniform_option_credit:
+    immediate_only: false
+    guidance_weight: 0.10
+    discount_option_credit: false

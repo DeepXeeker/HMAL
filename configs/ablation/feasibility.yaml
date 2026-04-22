@@ -1,0 +1,22 @@
+group: feasibility
+variants:
+  full_feasibility_aware:
+    masking_enabled: true
+    budget_checks_enabled: true
+    soft_penalty_enabled: false
+  masking_only:
+    masking_enabled: true
+    budget_checks_enabled: false
+    soft_penalty_enabled: false
+  budget_only:
+    masking_enabled: false
+    budget_checks_enabled: true
+    soft_penalty_enabled: false
+  soft_penalty_only:
+    masking_enabled: false
+    budget_checks_enabled: false
+    soft_penalty_enabled: true
+  no_constraints:
+    masking_enabled: false
+    budget_checks_enabled: false
+    soft_penalty_enabled: false
