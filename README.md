@@ -151,15 +151,6 @@ python scripts/run_ablation.py --group hierarchy --variant full_hmal
 python scripts/run_ablation.py --group distortion --variant clean_training
 ```
 
-## Reported paper tables and plotting
-
-Reported numeric values that were explicit in the paper text are stored as CSV files under `paper_results/`.
-
-```bash
-python scripts/reproduce_reported_tables.py
-python scripts/plot_reported_results.py --input paper_results --output outputs/plots
-```
-
 ## Testing
 
 ```bash
