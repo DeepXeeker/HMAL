@@ -160,35 +160,6 @@ python scripts/reproduce_reported_tables.py
 python scripts/plot_reported_results.py --input paper_results --output outputs/plots
 ```
 
-## Quick design summary
-
-### Tier-1
-
-- tabular Q-learning
-- bounded/hashing-based state abstraction
-- option-horizon credit assignment
-- internal guidance term for evidence-aware routing
-
-### Tier-2
-
-- mode-specific PPO executors
-- action masking by selected mode
-- coalition-budget checks before execution
-- shared observation pipeline + optional coalition message fusion
-
-### Coalition layer
-
-- coalition value = discounted mission return minus discounted action cost
-- equal-share and Monte-Carlo Shapley allocation
-- core feasibility checks over candidate subcoalitions
-
-### Offline replay layer
-
-- LANL and DARPA telemetry are converted into normalized event windows
-- event windows are mapped to the six paper feature groups
-- belief distortion is simulated by subsampling, delay, and source dropout
-- alarms and progression scores are produced from the HMAL belief trajectory
-
 ## Testing
 
 ```bash
