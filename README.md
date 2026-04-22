@@ -1,10 +1,8 @@
 # Coalition-Aware HMAL
 
-Reference implementation scaffold for the paper:
+**Title: Coalition-Aware Autonomous Cyber Defense with Deception-Aware Hypergame Modeling and Hierarchical Multi-Agent Learning**
 
-**Coalition-Aware Autonomous Cyber Defense with Deception-Aware Hypergame Modeling and Hierarchical Multi-Agent Learning**
-
-This repository reconstructs the paper's method as an executable research codebase with:
+This repository implements:
 
 - a **Tier-1 tabular Q-learning mode selector** over `Sense`, `Deceive`, `Recover`, and `Idle`
 - **Tier-2 PPO executors** for mode-specific low-level actions
