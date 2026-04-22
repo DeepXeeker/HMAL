@@ -30,16 +30,6 @@ coalition-aware-hmal/
 └── requirements.txt
 ```
 
-## Important reconstruction note
-
-The paper text is rich conceptually, but several implementation-critical details are **not fully specified**, including the exact equations referenced as Eq. (18) and Eq. (19), the exact state discretization for Tier-1, the precise coalition-value decomposition for every ablation, and complete numeric values for figure-only ablations. This repository therefore implements a **faithful research reconstruction** rather than a claim of exact byte-for-byte reproduction.
-
-See:
-
-- `docs/paper_analysis.md`
-- `docs/reconstruction_notes.md`
-- `docs/reproduction.md`
-
 ## Installation
 
 ### 1) Core Python environment
