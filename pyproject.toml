@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "coalition-aware-hmal"
 version = "0.1.0"
-description = "Reconstructed codebase for coalition-aware deception-aware HMAL cyber defense"
+description = "Implementation of coalition-aware deception-aware HMAL cyber defense"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
