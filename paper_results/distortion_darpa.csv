@@ -1,4 +1,0 @@
-variant,clean_precision,clean_auprc,moderate_auprc,severe_auprc,severe_recall,severe_lead_time_min
-Full Distortion-Aware Training,,,0.938,0.924,0.889,24.8
-Clean Training,0.956,0.952,0.909,0.871,0.823,
-Fixed Mild Distortion,,,,,,
