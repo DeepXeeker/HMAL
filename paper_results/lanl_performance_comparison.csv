@@ -1,8 +1,0 @@
-method,precision,recall,f1,auprc,lead_time_min
-H-MARL Expert,0.944,0.901,0.922,0.939,35.8
-TERLA-PPO,0.918,0.879,0.898,0.921,30.4
-LLM+RL ACD,0.905,0.846,0.874,0.894,24.7
-Zero-Trust MARL,0.928,0.887,0.907,0.929,33.5
-CommFormer-Hetero,0.936,0.909,0.922,0.943,37.2
-C-MADF,0.963,0.890,0.925,0.945,31.6
-Proposed HMAL,0.957,0.924,0.940,0.958,42.6
