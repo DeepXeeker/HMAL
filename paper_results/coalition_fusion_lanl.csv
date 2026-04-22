@@ -1,5 +1,0 @@
-variant,precision,recall,f1,auprc,lead_time_min,cross_zone_consistency
-Full Fused Profile,,0.924,0.939,0.958,42.8,0.914
-NoMessage,0.959,,,,,
-Local-only Belief,,,0.916,0.936,34.1,0.841
-Noisy/Delayed Fusion,0.961,,,,,
